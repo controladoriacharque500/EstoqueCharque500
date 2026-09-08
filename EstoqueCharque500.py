@@ -23,7 +23,7 @@ def formatar_br(valor, sufixo="", prefixo=""):
 
 # Configuração da Página
 st.set_page_config(
-    page_title="Dashboard de Vendas & Estoque - Rede Market",
+    page_title="Estoque Industria Charque",
     page_icon="🥩",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -101,7 +101,7 @@ if check_password():
     st.sidebar.divider()
 
     page = st.sidebar.radio("Selecione a Visão:", [
-        "📦 Estoque Lojas vs. Indústria (IN)"
+        "📦 Indústria (IN)"
     ])
 
     st.sidebar.divider()
@@ -111,8 +111,8 @@ if check_password():
     # -------------------------------------------------------------
     # PÁGINA 2: ESTOQUE LOJAS VS INDÚSTRIA
     # -------------------------------------------------------------
-    if page == "📦 Estoque Lojas vs. Indústria (IN)":
-        st.title("📦 Consulta e Comparativo de Estoque")
+    if page == "📦 Indústria (IN)":
+        st.title("📦 Consulta de Estoque")
         st.caption("Visão geral dos saldos físicos na Indústria (IN) e nas Filiais")
 
         if df_inv.empty:
