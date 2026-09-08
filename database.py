@@ -14,10 +14,6 @@ PALETA_CORES = {
 }
 
 NOMES_LOJAS = {
-    "01": "Maricá", "1": "Maricá",
-    "02": "Barra", "2": "Barra",
-    "03": "Inoã", "3": "Inoã",
-    "04": "Ceasa Irajá", "4": "Ceasa Irajá",
     "IN": "Indústria"
 }
 
