@@ -138,11 +138,7 @@ if check_password():
                 "IDPRODUTO", 
                 "PRODUTO", 
                 "Indústria (IN)", 
-                "Maricá", 
-                "Barra", 
-                "Inoã", 
-                "Ceasa Irajá"
-            ]
+           ]
             
             # Filtra apenas colunas que existem no DataFrame
             cols_finais = [c for c in colunas_estoque if c in df_exibicao.columns]
@@ -166,10 +162,7 @@ if check_password():
                 
                 c1, c2, c3, c4, c5 = st.columns(5)
                 c1.metric("🏭 Indústria (IN)", formatar_br(item_dados.get('Indústria (IN)', 0), sufixo=" kg"))
-                c2.metric("🏪 Maricá", formatar_br(item_dados.get('Maricá', 0), sufixo=" kg/un"))
-                c3.metric("🏪 Barra", formatar_br(item_dados.get('Barra', 0), sufixo=" kg/un"))
-                c4.metric("🏪 Inoã", formatar_br(item_dados.get('Inoã', 0), sufixo=" kg/un"))
-                c5.metric("🏪 Ceasa Irajá", formatar_br(item_dados.get('Ceasa Irajá', 0), sufixo=" kg/un"))
+               
 
    
 
