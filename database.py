@@ -72,22 +72,18 @@ def buscar_estoque_real():
             
             if not df.empty:
                 # 1. Busca histórico de vendas para saber o giro individual por LOJA
-                df_vendas = buscar_vendas_reais()
+                ##df_vendas = buscar_vendas_reais()
                 
                 
                 
                 # 2. Renomeia as colunas de estoque para os nomes amigáveis
                 renomear_colunas = {
-                    "ESTOQUE_LOJA_01": "Maricá",
-                    "ESTOQUE_LOJA_02": "Barra",
-                    "ESTOQUE_LOJA_03": "Inoã",
-                    "ESTOQUE_LOJA_04": "Ceasa Irajá",
                     "ESTOQUE_IN": "Indústria (IN)"
                 }
                 df.rename(columns=renomear_colunas, inplace=True)
                 
                 # 3. Remove produtos com estoque totalmente zerado em todas as pontas
-                colunas_estoque = ["Indústria (IN)", "Maricá", "Barra", "Inoã", "Ceasa Irajá"]
+                colunas_estoque = ["Indústria (IN)"]
                 cols_validas = [c for c in colunas_estoque if c in df.columns]
                 if cols_validas:
                     df = df[df[cols_validas].abs().sum(axis=1) > 0]
