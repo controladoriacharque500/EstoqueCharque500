@@ -111,7 +111,7 @@ if check_password():
     # -------------------------------------------------------------
     # PÁGINA 2: ESTOQUE LOJAS VS INDÚSTRIA
     # -------------------------------------------------------------
-    elif page == "📦 Estoque Lojas vs. Indústria (IN)":
+    if page == "📦 Estoque Lojas vs. Indústria (IN)":
         st.title("📦 Consulta e Comparativo de Estoque")
         st.caption("Visão geral dos saldos físicos na Indústria (IN) e nas Filiais")
 
