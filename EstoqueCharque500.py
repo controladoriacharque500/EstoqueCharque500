@@ -113,7 +113,7 @@ if check_password():
     # -------------------------------------------------------------
     if page == "📦 Indústria (IN)":
         st.title("📦 Consulta de Estoque")
-        st.caption("Visão geral dos saldos físicos na Indústria (IN) e nas Filiais")
+        st.caption("Visão geral dos saldos físicos na Indústria (IN)")
 
         if df_inv.empty:
             st.warning("Sem dados de estoque disponíveis no momento.")
