@@ -14,6 +14,10 @@ PALETA_CORES = {
 }
 
 NOMES_LOJAS = {
+    "01": "Maricá", "1": "Maricá",
+    "02": "Barra", "2": "Barra",
+    "03": "Inoã", "3": "Inoã",
+    "04": "Ceasa Irajá", "4": "Ceasa Irajá",
     "IN": "Indústria"
 }
 
@@ -112,7 +116,7 @@ def buscar_estoque_real():
                 df.rename(columns=renomear_colunas, inplace=True)
                 
                 # 3. Remove produtos com estoque totalmente zerado em todas as pontas
-                colunas_estoque = ["Indústria (IN)", "Maricá", "Barra", "Inoã", "Ceasa Irajá"]
+                colunas_estoque = ["Indústria (IN)"]
                 cols_validas = [c for c in colunas_estoque if c in df.columns]
                 if cols_validas:
                     df = df[df[cols_validas].abs().sum(axis=1) > 0]
