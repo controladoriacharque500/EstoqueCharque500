@@ -74,36 +74,7 @@ def buscar_estoque_real():
                 # 1. Busca histórico de vendas para saber o giro individual por LOJA
                 df_vendas = buscar_vendas_reais()
                 
-                if not df_vendas.empty:
-                    # Filtra apenas produtos vendáveis
-                    produtos_vendaveis = df_vendas["IDPRODUTO"].unique()
-                    df = df[df["IDPRODUTO"].isin(produtos_vendaveis)].copy()
-                    
-                    # Média de vendas semanais POR LOJA E POR PRODUTO
-                    # (Dividido por 4.3 para estimar 1 semana a partir do histórico mensal)
-                    data_minima = df_vendas["DATA"].min()
-                    data_hoje = pd.Timestamp.now()
-                    dias_decorridos = (data_hoje - data_minima).days
-                    #calculo antigo vendas_por_loja = df_vendas.groupby(["IDPRODUTO", "LOJA"])["QTD_VENDIDA_TOTAL"].sum() / 4.3
-                    # 2. Converte esses dias para semanas reais (garantindo no mínimo 1 semana)
-                    semanas_decorridas = max(dias_decorridos / 7.0, 1.0)
-                    # 3. Divide o acumulado pelo número REAL de semanas decorridas
-                    vendas_por_loja = df_vendas.groupby(["IDPRODUTO", "LOJA"])["QTD_VENDIDA_TOTAL"].sum() / semanas_decorridas
-                    # Cria colunas de mínimo individual para cada loja
-                    # Mapeia o mínimo específico da filial (ex: MINIMO_Maricá, MINIMO_Barra, etc.)
-                    lojas_map = {
-                        "ESTOQUE_LOJA_01": "Maricá",
-                        "ESTOQUE_LOJA_02": "Barra",
-                        "ESTOQUE_LOJA_03": "Inoã",
-                        "ESTOQUE_LOJA_04": "Ceasa Irajá"
-                    }
-                    
-                    for col_estoque, nome_loja in lojas_map.items():
-                        col_minimo = f"MINIMO_{nome_loja}"
-                        # Busca a média de vendas específica desta loja para este produto
-                        df[col_minimo] = df["IDPRODUTO"].apply(
-                            lambda pid: vendas_por_loja.get((pid, nome_loja), 0.0)
-                        ).round(2)
+                
                 
                 # 2. Renomeia as colunas de estoque para os nomes amigáveis
                 renomear_colunas = {
